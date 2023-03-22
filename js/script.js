@@ -13,11 +13,19 @@ window.onload = function () {
         // 클래스 추가 방식
         const state = mbWrap.classList.contains("active");
         if (state) {
-            navMb.classList.remoeve("active");
+            navMb.classList.remove("active");
             mbWrap.classList.remove("active");
         } else {
             navMb.classList.add("active");
             mbWrap.classList.add("active");
         }
+    });
+    // 비주얼 슬라이드
+    new Swiper(".swVisual", {
+        loop: true,
+        autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+        },
     });
 };
