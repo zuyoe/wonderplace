@@ -79,7 +79,7 @@ body::-webkit-scrollbar-track {
     padding: 0 8.33%;
     padding-top: 60px;
     transition: padding-top 0.3s;
-    background-color: pink;
+    background-color: #fff;
 }
 .header .inner.active {
     padding-top: 40px;
@@ -386,11 +386,13 @@ body::-webkit-scrollbar-track {
 .visual .inner {
     display: flex;
     justify-content: flex-start;
-    padding-top: 100px;
+    padding-top: 220px;
     z-index: 9;
+    width: 83.3333%;
+    max-width: 1920px;
 }
 .sw-visual-control {
-    margin-right: 260px;
+    margin-right: 17%;
 }
 
 .sw-visual-control li {
@@ -399,6 +401,11 @@ body::-webkit-scrollbar-track {
     padding: 12px 0;
     padding-left: 30px;
     cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 300;
+    color: #131313;
+    letter-spacing: 1px;
 }
 .sw-visual-control li::before {
     content: "";
@@ -410,13 +417,17 @@ body::-webkit-scrollbar-track {
     background: #999;
     transition: all 0.3s;
 }
-.sw-visual-control li.active:before {
+.sw-visual-control li.active {
+    font-weight: 700;
+}
+.sw-visual-control li.active::before {
     width: 20px;
     background: #000;
 }
 
 .visual-wrap {
     position: relative;
+    width: 70%;
 }
 .visual-wrap h2 {
     font-size: 80px;
@@ -425,6 +436,8 @@ body::-webkit-scrollbar-track {
     line-height: 100px;
     letter-spacing: -3px;
     margin-bottom: 60px;
+
+    white-space: nowrap;
 }
 .visual-wrap h3 {
     font-size: 80px;
@@ -446,6 +459,7 @@ body::-webkit-scrollbar-track {
     width: 80px;
     height: 80px;
     cursor: pointer;
+    font-size: 0;
 }
 .sw-visual-prev::before {
     content: "";
@@ -474,6 +488,7 @@ body::-webkit-scrollbar-track {
     width: 80px;
     height: 80px;
     cursor: pointer;
+    font-size: 0;
 }
 
 .sw-visual-next::before {
@@ -500,6 +515,8 @@ body::-webkit-scrollbar-track {
     left: 0;
     top: calc(100% + 66px);
 
+    width: 45%;
+
     font-size: 18px;
     font-weight: 200;
     line-height: 30px;
@@ -509,6 +526,8 @@ body::-webkit-scrollbar-track {
 .visual-wrap p b {
     font-weight: 700;
     display: block;
+
+    margin-bottom: 20px;
 }
 /* 비주얼 Swiper */
 .swVisual-wrap {
@@ -519,7 +538,7 @@ body::-webkit-scrollbar-track {
 
 .swVisual {
     width: 100%;
-    height: 480px;
+    height: 720px;
 }
 .v-box {
     position: relative;
@@ -540,6 +559,103 @@ body::-webkit-scrollbar-track {
     background-size: cover;
 }
 
+@media screen and (max-width: 1440px) {
+    .sw-visual-control {
+        margin-right: 14%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .visual-wrap h2 {
+        font-size: 55px;
+        line-height: 65px;
+        margin-bottom: 10px;
+    }
+    .visual-wrap h3 {
+        font-size: 55px;
+        font-weight: 800;
+    }
+    .visual-wrap p {
+        position: relative;
+        width: 100%;
+        left: auto;
+        top: auto;
+        margin-top: 50px;
+    }
+
+    .swVisual-wrap {
+        /* margin-top: 30px; */
+    }
+    .sw-visual-nav {
+        position: relative;
+        float: right;
+        right: auto;
+        bottom: auto;
+    }
+    .swVisual {
+        height: 648px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .visual .inner {
+        padding-top: 190px;
+    }
+    .visual-wrap p {
+        font-size: 15px;
+        line-height: 25px;
+        margin-top: 20px;
+    }
+    .swVisual {
+        height: 576px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .visual .inner {
+        padding-top: 170px;
+    }
+
+    .sw-visual-control {
+        margin-right: 10%;
+    }
+    .visual-wrap h2 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .visual-wrap h3 {
+        font-size: 40px;
+    }
+
+    .visual-wrap p {
+        font-size: 0px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .visual-wrap p b {
+        font-size: 15px;
+    }
+    .sw-visual-nav {
+        display: none;
+    }
+    .swVisual {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .visual .inner {
+        padding-top: 140px;
+    }
+
+    .visual-wrap h2 {
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .visual-wrap h3 {
+        font-size: 35px;
+    }
+}
 /* 소개 */
 .about {
     position: relative;
