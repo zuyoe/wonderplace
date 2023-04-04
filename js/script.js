@@ -1,4 +1,7 @@
 window.onload = function () {
+  // AOS 셋팅
+  AOS.init();
+
   // 모바일 메뉴 관련
   const navMb = document.querySelector(".nav-mb");
   const mbWrap = document.querySelector(".mb-wrap");
@@ -101,6 +104,12 @@ window.onload = function () {
 
   // 변화를 줄 대상
   let swVisualWrap = document.querySelector(".swVisual-wrap");
+
+  /* effectText 인터렉션 */
+  let stX = 50; // 50% 를 기준으로 한다. (translate)
+  let effect_01 = document.querySelector(".effect-01");
+  let effect_02 = document.querySelector(".effect-02");
+
   // 변화를 적용할 함수
   function swVisualMove() {
     // scale 적용 비율값
@@ -116,10 +125,36 @@ window.onload = function () {
     if (transY > 10) {
       transY = 10;
     }
+
     // 최종 transform 에 적용할 글자 완성
     let cssTxt = `translateY(${transY}%) scale(${ratio})`;
     // console.log(cssTxt);
     swVisualWrap.style.transform = cssTxt;
+  }
+
+  function effectText() {
+    let value02 = stX * 2;
+    //https://developer.mozilla.org/ko/docs/Web/API/Element/getBoundingClientRect
+    let rect =
+      document.querySelector(".effect").getBoundingClientRect().top +
+      window.scrollY;
+    // windHeight: 웹브라우저 내용(상단 웹브라우저 메뉴 제거한 높이)
+    let offset = rect - winHeight;
+
+    let calvalue = scTop - offset;
+    let ratio = stX - (calvalue / winHeight) * value02;
+    if (ratio >= value02) ratio = value02;
+    if (window.innerWidth <= 540) {
+      ratio = ratio * 0.5;
+    }
+    let cssTxt = "translate(" + ratio + "%,0px)";
+    effect_01.style.transform = cssTxt;
+    // console.log(cssTxt);
+
+    // ratio = -ratio;
+    let cssTxt2 = "translate(" + -1 * ratio + "%,0px)";
+    effect_02.style.transform = cssTxt2;
+    // console.log(cssTxt2);
   }
 
   // 기준값 갱신
@@ -127,10 +162,12 @@ window.onload = function () {
     winHeight = window.innerHeight;
     scTop = window.scrollY || window.pageYOffset;
     swVisualMove();
+    effectText();
   });
   window.addEventListener("resize", function () {
     winHeight = window.innerHeight;
     scTop = window.scrollY || window.pageYOffset;
     swVisualMove();
+    effectText();
   });
 };
