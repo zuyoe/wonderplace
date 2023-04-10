@@ -92,7 +92,48 @@ window.onload = function () {
   }
 
   // brandSlide
-  const swBrand = new Swiper(".swBrand");
+  let swBrandBts = document.querySelectorAll(".swBrandMenu > li");
+  const swBrand = new Swiper(".swBrand", {
+    pagination: {
+      el: ".swBrand-pg ",
+      clickable: true,
+    },
+    effect: "fade",
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+  });
+
+  swBrand.on("slideChangeTransitionStart", function () {
+    // console.log("slide changed", this.realIndex);
+    changeSwBrandFocus(this.realIndex);
+  });
+
+  swBrandBts.forEach((item, index) => {
+    item.addEventListener("click", function (e) {
+      // href 막기
+      e.preventDefault();
+      // 인덱스 번호를 넘겨서 슬라이드를 이동한다.
+      changeSwBrand(index);
+    });
+  });
+
+  function changeSwBrand(index) {
+    // 슬라이드 이동
+    swBrand.slideTo(index);
+    changeSwBrandFocus(index);
+  }
+
+  // active 클래스 이동
+  function changeSwBrandFocus(index) {
+    // li 태그에서 active 클래스 모두 지우기
+    swBrandBts.forEach((item) => {
+      item.classList.remove("active");
+    });
+    // 하나만 포커스(active) 클래스 적용
+    swBrandBts[index].classList.add("active");
+  }
 
   // Visual Swiper 스케일 효과
   // 참조 https://bkstudio.tistory.com/6
