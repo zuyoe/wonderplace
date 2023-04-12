@@ -12,8 +12,8 @@ window.onload = function () {
     window.addEventListener("scroll", function () {
         // 1. 스크롤바의 위치 값
         const scY = window.scrollY;
-        // 2. 스크로바가 100픽셀 이동시
-        if (scY > 100) {
+        // 2. 스크로바가 80픽셀 읻오시
+        if (scY > 80) {
             goTopBt.classList.add("active");
         } else {
             goTopBt.classList.remove("active");
